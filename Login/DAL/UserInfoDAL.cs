@@ -15,9 +15,9 @@ namespace Login.DAL
         SQLHelper sqlHelp = new SQLHelper();
         public int UserLogin(UserInfo user)
         {
-            int i = (int)sqlHelp.ExecuteScalar("select count(*) from T_login where username=@UserName and password=@PassWord",
+            int i = Convert.ToInt32(sqlHelp.ExecuteScalar("select count(*) from T_login where username=@UserName and password=@PassWord",
                  new SqlParameter("@UserName", user.userName),
-                  new SqlParameter("@PassWord", user.password));
+                  new SqlParameter("@PassWord", user.password)));
             return i;
         }
     }
